@@ -3,15 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Late Fee and Pizza Calculator</title>
+    <link rel="stylesheet" href="style.css" >
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="code.js"></script>
 </head>
 <body>
 <h1>Library Late Fee Calculator</h1>
 <p>Oh no! Your library stuff is late? Calculate how much you owe here!</p>
-<button onclick="calculateLateFee()">How much do I owe?</button>
+<fieldset>
+    <legend>Calculate Late Fee</legend>
+    <label for="numLateBooks">Number of Late Books</label>
+    <input id="numLateBooks" type="number">
+    <br>
+    <label for="numLateDVDs">Number of Late DVDs</label>
+    <input id="numLateDVDs" type="number">
+    <br>
+    <label for="daysLate">Number of Days Late</label>
+    <input id="daysLate" type="number">
+</fieldset>
+<br>
+<button id="libraryFeeButton">How much do I owe?</button>
+<p id="libraryFeeOutput" class="output"></p>
 
 <h1>Pizza Per Person Calculator</h1>
 <p>Sad about your library fee? Grab some friends and get pizza! Calculate how much each person owes here!</p>
-<button onclick="calculatePizzaPerPerson()">How much per person?</button>
+<fieldset>
+    <legend>Calculate Pizza Per Person</legend>
+    <label for="numPeople">Number of People</label>
+    <input id="numPeople" type="number">
+    <br>
+    <label for="numPizzas">Number of Pizzas</label>
+    <input id="numPizzas" type="number">
+    <br>
+    <label for="avgNumToppings">Average Number of Toppings Per Pizza</label>
+    <input id="avgNumToppings" type="number">
+</fieldset>
+<br>
+<button id="pizzaPerPersonButton">How much per person?</button>
+<p id="pizzaPerPersonOutput" class="output"></p>
+
 </body>
 </html>

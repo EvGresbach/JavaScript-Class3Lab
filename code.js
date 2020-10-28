@@ -1,56 +1,72 @@
-function calculateLateFee()
-{
-    // get number of late books and convert to number
-    var numLateBooks = parseInt(prompt("How many books are late?"));
+$(document).ready(
+    function()
+    {
+        //event handlers
+        $("#libraryFeeButton").click(calculateLateFee);
+        $("#pizzaPerPersonButton").click(calculatePizzaPerPerson)
 
-    // get number of late DVDs and convert to number
-    var numLateDVDs = parseInt(prompt("How many DVDs are late?"));
+        //other functions
+        function calculateLateFee()
+        {
+            // get number of late books and convert to number
+            var numLateBooks = parseInt($("#numLateBooks").val());
 
-    // get the number of days late the items are and convert to number
-    var dayslate = parseInt(prompt("How many days are they late?"));
+            // get number of late DVDs and convert to number
+            var numLateDVDs = parseInt($("#numLateDVDs").val());
 
-    //Multiply bookLateFee by lateBooks and daysLate
-    const lateBookFee = .25;
-    var costLateBooks = lateBookFee * numLateBooks;
+            // get the number of days late the items are and convert to number
+            var dayslate = parseInt($("#daysLate").val());
 
-    //Multiple dvdLateFee by lateDVDs and daysLate
-    const lateDVDFee = .5;
-    var costLateDVDs = lateDVDFee * numLateDVDs;
+            //Multiply bookLateFee by lateBooks and daysLate
+            const lateBookFee = .25;
+            var costLateBooks = lateBookFee * numLateBooks * dayslate;
 
-    //Add the fees
-    var totalLateFee = costLateBooks + costLateDVDs;
+            //Multiple dvdLateFee by lateDVDs and daysLate
+            const lateDVDFee = .5;
+            var costLateDVDs = lateDVDFee * numLateDVDs * dayslate;
 
-    //print the total fee
-    alert(`Your late fee is $${totalLateFee}`);
-}
-function calculatePizzaPerPerson()
-{
-    // get number of people and convert
-    var numPeople = parseInt(prompt("How many people in your group?"));
+            //Add the fees
+            var totalLateFee = costLateBooks + costLateDVDs;
 
-    // get number of pizzas and convert
-    var numPizzas = parseInt(prompt("How many pizzas are you buying?"));
+            //print the total fee
+            $("#libraryFeeOutput").text(`Your late fee is $${totalLateFee}`);
+            $("#libraryFeeOutput").show();
 
-    // get average number of toppings per pizza and convert
-    var avgNumToppings = parseInt(prompt("How many toppings on each pizza?"));
+        }
+        function calculatePizzaPerPerson()
+        {
+            // get number of people and convert
+            var numPeople = parseInt($("#numPeople").val());
 
-    // Multiply numberOfPizzas by costPerPizza
-    const costPerPizza = 15;
-    var costOfPizzas = costPerPizza * numPizzas;
+            // get number of pizzas and convert
+            var numPizzas = parseInt($("#numPizzas").val());
 
-    // multiply averageNumberOfToppings by numberOfPizzas for totalToppings
-    var totalNumToppings = avgNumToppings * numPizzas;
+            // get average number of toppings per pizza and convert
+            var avgNumToppings = parseInt($("#avgNumToppings").val());
 
-    // multiple totalNumberOfToppings by costPerTopping for totalCostOfToppings
-    const costPerTopping = 1.25;
-    var costOfToppings = costPerTopping * totalNumToppings;
+            // Multiply numberOfPizzas by costPerPizza
+            const costPerPizza = 15;
+            var costOfPizzas = costPerPizza * numPizzas;
 
-    // add totalCostOfPizza and totalCostOfToppings
-    var totalCost = costOfPizzas + costOfToppings;
+            // multiply averageNumberOfToppings by numberOfPizzas for totalToppings
+            var totalNumToppings = avgNumToppings * numPizzas;
 
-    //calculate and print cost per person
-    var costPerPerson = totalCost/numPeople;
-    alert(`It will be $${costPerPerson.toFixed(2)} per person.`)
+            // multiple totalNumberOfToppings by costPerTopping for totalCostOfToppings
+            const costPerTopping = 1.25;
+            var costOfToppings = costPerTopping * totalNumToppings;
+
+            // add totalCostOfPizza and totalCostOfToppings
+            var totalCost = costOfPizzas + costOfToppings;
+
+            //calculate and print cost per person
+            var costPerPerson = totalCost/numPeople;
+            $("#pizzaPerPersonOutput").text(`It will be $${costPerPerson.toFixed(2)} per person.`);
+            $("#pizzaPerPersonOutput").show();
+
+        }
+    }
+);
 
 
-}
+
+
